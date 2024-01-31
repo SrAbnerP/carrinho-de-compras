@@ -4,11 +4,14 @@ import propTypes from "prop-types";
 import AppContext from "./AppContext";
 
 function Provider({ children }) {
-  const [name, setName] = useState("Manual do DEV");
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const value = {
-    name,
-    setName,
+    products,
+    setProducts,
+    loading,
+    setLoading,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
