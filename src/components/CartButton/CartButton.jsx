@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { CiShoppingCart } from "react-icons/ci";
 
-import './CartButton.css'
+import "./CartButton.css";
+import AppContext from "../../context/AppContext";
 
 function CartButton() {
+  const { cartItems, isCartVisible, setIsCartVisible } = useContext(AppContext);
+
   return (
-    <button className="cart-button">
+    <button
+      type="button"
+      className="cart-button"
+      onClick={() => setIsCartVisible(!isCartVisible)}
+    >
       <CiShoppingCart />
-      <span className="cart-status">1</span>
+      {cartItems.length > 0 && (
+        <span className="cart-status">{cartItems.length}</span>
+      )}
     </button>
   );
 }
